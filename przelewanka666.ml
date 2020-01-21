@@ -4,7 +4,7 @@ let przelewanka a =
   let warunek_konieczny =
     try
       begin
-        Array.iter (fun (x, y) -> if y = 0 || x = 0 then raise Exit else ()) a;
+        Array.iter (fun (x, y) -> if y = 0 || x = y then raise Exit else ()) a;
         false;
       end;
     with Exit ->
