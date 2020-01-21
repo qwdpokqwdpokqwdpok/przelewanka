@@ -1,5 +1,3 @@
-
-
 let przelewanka a =
   let n = Array.lenght a in
   if n = 0 then 0 else
@@ -44,13 +42,13 @@ let przelewanka a =
           dodaj (ns, r + 1);
           ns.(i) <- 0;
           dodaj (ns, r + 1);
-          ns.(i) <- s.(i)
+          ns.(i) <- s.(i);
             for j = 0 to n - 1 do
               if i <> j then
                 let ile = min (fst a.(j) - s.(j)) s.(i) in
                 ns.(i) <- ns.(i) - ile;
                 ns.(j) <- ns.(j) + ile;
-                dodaj ns;
+                dodaj (ns, r + 1);
                 ns.(i) <- s.(i);
                 ns.(j) <- s.(j);
             done;
