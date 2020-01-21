@@ -3,11 +3,13 @@
 
 
 let przelewanka a =
+  let n = Array.lenght a in
+  if n = 0 then 0 else
   let warunek_konieczny =
     try
       begin
         Array.iter (fun (x, y) -> if y = 0 || x = 0 then raise Dobrze else ()) a;
-        false
+        false;
       end
     with Dobrze ->
     let rec nwd a b =
@@ -17,7 +19,26 @@ let przelewanka a =
     try
       begin
         Array.iter (fun (_, y) -> if y mod nwd_pojemnosci <> 0 then raise Zle else ()) a;
-        true
+        true;
       end
-    with Zle -> false
-
+    with Zle -> false;
+  if not warunek_konieczny then -1 else
+  let wynik = ref (-1) in
+  let q = Queue.create () in
+  let h = Hashtbl.create 666 in
+  let start = Array.make n 0 in
+  let koniec = Array.init n (fun i -> snd a.(i))
+  let dodaj (stan, ruchy) =
+    if not Hashtbl.mem h stan then
+      if stan = koniec then
+        wynik := ruchy;
+        Queue.clear q;
+      else
+      Hashtbl.add h (stan ruchy);
+      Queue.add (stan ruchy) q; in
+  begin
+    dodaj (start, 0);
+    while (not Queue.is_empty q) && !wynik = -1 do
+      let (s, r) = Queue.take 
+  
+      
