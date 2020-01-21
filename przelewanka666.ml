@@ -30,7 +30,8 @@ let przelewanka a =
         wynik := ruchy;
         Queue.clear q;)
       else (
-      Hashtbl.add (Array.copy stan) h;
+      Hashtbl.add h stan true;
+      (* czemu musze dodawac drugi argument do tablicy hashy *)
       Queue.add (stan, ruchy) q;)) in
   begin
     dodaj (start, 0);
