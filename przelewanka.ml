@@ -27,7 +27,7 @@ let przelewanka a =
   let q = Queue.create () in
   let h = Hashtbl.create 666 in
   let start = Array.make n 0 in
-  let koniec = Array.init n (fun i -> snd a.(i))
+  let koniec = Array.init n (fun i -> snd a.(i)) in
   let dodaj (stan, ruchy) =
     if not Hashtbl.mem h stan then
       if stan = koniec then
