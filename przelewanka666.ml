@@ -1,6 +1,9 @@
 let przelewanka a =
   let n = Array.length a in
   if n = 0 then 0 else
+  let start = Array.make n 0 in
+  let koniec = Array.init n (fun i -> snd a.(i)) in
+  if start = koniec then 0 else
   let warunek_konieczny =
     try
       begin
@@ -22,8 +25,6 @@ let przelewanka a =
   let wynik = ref (-1) in
   let q = Queue.create () in
   let h = Hashtbl.create 666 in
-  let start = Array.make n 0 in
-  let koniec = Array.init n (fun i -> snd a.(i)) in
   let dodaj (stan, ruchy) =
     if !wynik = -1 && not (Hashtbl.mem h stan) then (
       if stan = koniec then (
