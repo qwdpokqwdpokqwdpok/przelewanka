@@ -25,7 +25,7 @@ let przelewanka a =
   let start = Array.make n 0 in
   let koniec = Array.init n (fun i -> snd a.(i)) in
   let dodaj (stan, ruchy) =
-    if not !wynik = -1 && (Hashtbl.mem h stan) then (
+    if !wynik = -1 && not (Hashtbl.mem h stan) then (
       if stan = koniec then (
         wynik := ruchy;
         Queue.clear q;)
